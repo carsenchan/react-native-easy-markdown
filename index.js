@@ -147,7 +147,10 @@ class Markdown extends Component {
 
         if (node.props) {
             if (this.props.renderText) {
-                return this.props.renderText(node, textType, node.props);
+                // Call custom text with a reference to renderNodes so that consumers can recurse children back through the top level rendering
+                // This fixed issues where our consuming renderText was calling renderText with nested nodes
+                // e.g a titan link, inside of an emphasis - but titanLink could not be handled just through a recursive render text call - it needed to call render nodes
+                return this.props.renderText(node, textType, node.props, undefined, this.renderNodes.bind(this));
             }
             return (
                 <Text key={key} style={style}>
@@ -156,7 +159,10 @@ class Markdown extends Component {
             );
         } else {
             if (this.props.renderText) {
-                return this.props.renderText(node, textType)
+                // Call custom text with a reference to renderNodes so that consumers can recurse children back through the top level rendering
+                // This fixed issues where our consuming renderText was calling renderText with nested nodes
+                // e.g a titan link, inside of an emphasis - but titanLink could not be handled just through a recursive render text call - it needed to call render nodes
+                return this.props.renderText(node, textType, undefined, undefined, this.renderNodes.bind(this));
             }
             return (
                 <Text key={key} style={style}>{node}</Text>
