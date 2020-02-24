@@ -26,7 +26,7 @@
     "use-memo-one": "^1.1.1"
   },
   "peerDependencies": {
-    "react-native": "*"
+    "react-native": "^0.59.0"
   },
   "devDependencies": {
     "standard": "^14.3.1"
