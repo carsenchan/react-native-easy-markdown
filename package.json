@@ -22,7 +22,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "simple-markdown": "^0.7.2"
+    "simple-markdown": "^0.7.2",
+    "use-memo-one": "^1.1.1"
   },
   "peerDependencies": {
     "react-native": "*"

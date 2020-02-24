@@ -8,10 +8,11 @@ const Utils = {
             typeof nodes[i].hasOwnProperty === 'function' &&
             Object.prototype.hasOwnProperty.call(nodes[i], 'type') &&
             typeof nodes[i].type.hasOwnProperty === 'function' &&
-            Object.prototype.hasOwnProperty.call(
-              (nodes[i].type, 'displayName') ||
-                Object.prototype.hasOwnProperty.call(nodes[i].type, 'name')
-            )
+            (Object.prototype.hasOwnProperty.call(
+              nodes[i].type,
+              'displayName'
+            ) ||
+              Object.prototype.hasOwnProperty.call(nodes[i].type, 'name'))
           ) {
             if (
               nodes[i].type.displayName !== 'Text' &&
