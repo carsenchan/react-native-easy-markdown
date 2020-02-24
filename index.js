@@ -100,7 +100,7 @@ const Markdown = ({
     } else {
       return (
         <Text key={key} style={style}>
-          {node}
+          {node.split('\n').join(' ')}
         </Text>
       )
     }
