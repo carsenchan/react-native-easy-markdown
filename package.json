@@ -1,30 +1,33 @@
 {
-    "name": "react-native-easy-markdown",
-    "version": "1.5.0",
-    "description": "Simple & customizable React Native component to render Github-flavoured markdown using minimal native components.",
-    "main": "index.js",
-    "repository": "https://github.com/TitanInvest/react-native-easy-markdown",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "react-native",
-        "native",
-        "markdown",
-        "parse",
-        "parser"
-    ],
-    "contributors": [
-        "Juuso Lappalainen",
-        "Zach Ivester <zach@titanvest.com>",
-        "Gregor MacLennan <gmaclennan@gmail.com>"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "simple-markdown": "^0.7.2"
-    },
-    "peerDependencies": {
-        "react-native": "*"
-    },
-    "devDependencies": {}
+  "name": "react-native-easy-markdown",
+  "version": "1.5.0",
+  "description": "Simple & customizable React Native component to render Github-flavoured markdown using minimal native components.",
+  "main": "index.js",
+  "repository": "https://github.com/TitanInvest/react-native-easy-markdown",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  },
+  "keywords": [
+    "react-native",
+    "native",
+    "markdown",
+    "parse",
+    "parser"
+  ],
+  "contributors": [
+    "Juuso Lappalainen",
+    "Zach Ivester <zach@titanvest.com>",
+    "Gregor MacLennan <gmaclennan@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "simple-markdown": "^0.7.2"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
 }
