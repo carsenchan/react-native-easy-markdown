@@ -1,4 +1,6 @@
 import React from "react";
+import SimpleMarkdown from "simple-markdown";
+
 const underlineRule = {
   // Specify the order in which this rule is to be run
   order: SimpleMarkdown.defaultRules.em.order - 0.5,
