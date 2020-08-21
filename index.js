@@ -14,6 +14,7 @@ import { useMemoOne } from "use-memo-one";
 
 import defaultStyles from "./styles";
 import Utils from "./Utils";
+import additionalRules from "./rules";
 
 const Markdown = ({
   children,
@@ -26,40 +27,16 @@ const Markdown = ({
   renderListBullet: customRenderListBullet,
   ...otherProps
 }) => {
-  var underlineRule = {
-    // Specify the order in which this rule is to be run
-    order: SimpleMarkdown.defaultRules.em.order - 0.5,
+  let rules = _.extend({}, SimpleMarkdown.defaultRules, {
+    underline: additionalRules.underlineRule,
+  });
 
-    // First we check whether a string matches
-    match: function (source) {
-      return /^<u>([\s\S]+?)<\/u>(?!_)/.exec(source);
-    },
+  rules = _.extend({}, rules, {
+    superscript: additionalRules.superscriptRule,
+  });
 
-    // Then parse this string into a syntax node
-    parse: function (capture, parse, state) {
-      return {
-        content: parse(capture[1], state),
-      };
-    },
-
-    // Finally transform this syntax node into a
-    // React element
-    react: function (node, output) {
-      return React.createElement("u", {}, output(node.content));
-      // return React.DOM.u(null, output(node.content));
-    },
-
-    // Or an html element:
-    // (Note: you may only need to make one of `react:` or
-    // `html:`, as long as you never ask for an outputter
-    // for the other type.)
-    html: function (node, output) {
-      return "<u>" + output(node.content) + "</u>";
-    },
-  };
-
-  const rules = _.extend({}, SimpleMarkdown.defaultRules, {
-    underline: underlineRule,
+  rules = _.extend({}, rules, {
+    subscript: additionalRules.subscriptRule,
   });
 
   const parser = useMemoOne(() => SimpleMarkdown.parserFor(rules), []);
@@ -274,6 +251,10 @@ const Markdown = ({
         return renderText(node, key, Utils.concatStyles(extras, styles.u));
       case "blockquote":
         return renderBlockQuote(node, key);
+      case "sup":
+        return renderText(node, key, Utils.concatStyles(extras, styles.u));
+      case "sub":
+        return renderText(node, key, Utils.concatStyles(extras, styles.u));
       case undefined:
         return renderText(node, key, extras);
       default:
