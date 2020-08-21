@@ -252,9 +252,9 @@ const Markdown = ({
       case "blockquote":
         return renderBlockQuote(node, key);
       case "sup":
-        return renderText(node, key, Utils.concatStyles(extras, styles.u));
+        return renderText(node, key, Utils.concatStyles(extras, styles.sup));
       case "sub":
-        return renderText(node, key, Utils.concatStyles(extras, styles.u));
+        return renderText(node, key, Utils.concatStyles(extras, styles.sub));
       case undefined:
         return renderText(node, key, extras);
       default:
