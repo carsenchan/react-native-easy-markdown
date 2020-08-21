@@ -22,6 +22,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.20",
     "simple-markdown": "^0.7.2",
     "use-memo-one": "^1.1.1"
   },
