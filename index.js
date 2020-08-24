@@ -204,6 +204,17 @@ const Markdown = ({
     }
   }
 
+  const renderSupscript = (node, key, extras) => {
+    const style =
+      extras && extras.style ? [styles.text].concat(extras.style) : styles.text;
+
+    return (
+      <Text key={key} style={style}>
+        {Utils.toSuperScript(node.props.children[0]).split("\n").join(" ")}
+      </Text>
+    );
+  };
+
   function renderNode(node, key, index, extras) {
     if (
       node == null ||
@@ -252,7 +263,7 @@ const Markdown = ({
       case "blockquote":
         return renderBlockQuote(node, key);
       case "sup":
-        return renderText(node, key, Utils.concatStyles(extras, styles.sup));
+        return renderSupscript(node, key, extras);
       case "sub":
         return renderText(node, key, Utils.concatStyles(extras, styles.sub));
       case undefined:
